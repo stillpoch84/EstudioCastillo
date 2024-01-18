@@ -1,0 +1,71 @@
+{% extends "app_estudiocastillo/base.html" %}
+
+{% block contenido %}
+<section>
+  <div>
+    <div class="col-md-8 mt-3 left">
+      <div class="d-flex justify-content-between mb-3">
+    <h1>Lista de Clientes</h1>
+    <a href="{% url 'crear_cliente' %}" class="btn btn-dark">Crear Cliente</a>
+      </div>
+     <form action="{% url 'buscar_cliente' %}" method="GET">
+      {% csrf_token %}
+      <input name="q" type="text" placeholder="Ingrese palabra clave.">
+      <input type="submit" value="Buscar">
+    </form>
+    <br>
+    
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>ID</th>
+          <th>Razon Social</th>
+          <th>CUIT</th>
+          <th>Domicilio</th>
+          <th>Localidad</th>
+          <th>Provincia</th>
+          <th>Contacto</th>
+          <th>Celular</th>
+          <th>Mail</th>
+          <th>Forma</th>
+          <th>Situación de IVA</th>
+          <th>Ingresos Brutos</th>
+        </tr>
+        {% for cliente in object_list %}
+        <tr>
+          <td>{{ cliente.id }}</td>
+          <td>{{ cliente.razon_social }}</td>
+          <td>{{ cliente.CUIT }}</td>
+          <td>{{ cliente.domicilio }}</td>
+          <td>{{ cliente.localidad }}</td>
+          <td>{{ cliente.provincia }}</td>
+          <td>{{ cliente.contacto_nombre }}</td>
+          <td>{{ cliente.celular }}</td>
+          <td>{{ cliente.mail }}</td>
+          <td>{{ cliente.forma }}</td>
+          <td>{{ cliente.situacion_iva }}</td>
+          <td>{{ cliente.ingresos_brutos }}</td>
+          <td>
+            <a href="{% url 'ver_cliente' cliente.id %}">
+            <span class='bi bi-info-circle' style="color: black;"></span>
+            </a>
+          </td>
+          <td>
+            <a href="{% url 'editar_cliente' vino.id %}">
+              <span class='bi bi-pencil-fill' style="color: black;"></span>
+            </a>
+          </td>
+          <td>
+            <a href="{% url 'eliminar_cliente' vino.id %}">
+              <i class="bi bi-trash" style="color: black;"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+ 
+  </div>
+ </section>
+ {% endblock contenido %}
+ 

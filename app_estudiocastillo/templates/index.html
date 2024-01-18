@@ -1,0 +1,17 @@
+{% extends "app_estudiocastillo/base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="container text-center">
+    {% if user.is_authenticated %}
+      <h1>Bienvenidos a Estudio Castillo, {{ user.first_name }}.</h1>
+      <h5>Sistema de gestión hecho a medida.</h5>
+      <img src="{{ user.avatar.imagen.url }}" style="width: 150px; height: 150px;" class="mx-auto d-block">
+    {% else %}  
+        <h1>Bienvenidos Estudio Castillo.</h1>
+        <h5>Registrata o iniciá sesión.</h5>
+    {% endif %}
+</div>
+
+{% endblock contenido %}

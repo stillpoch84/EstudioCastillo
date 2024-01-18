@@ -18,7 +18,7 @@ class ClienteCreateView(LoginRequiredMixin, CreateView):
     fields = ('id', 'razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos')
     success_url = reverse_lazy('lista_clientes')   
 
-class CLienteDetailView(LoginRequiredMixin, DetailView):
+class ClienteDetailView(LoginRequiredMixin, DetailView):
     model = Cliente
     success_url = reverse_lazy('lista_clientes')
 

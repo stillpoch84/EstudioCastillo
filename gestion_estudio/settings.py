@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app_estudiocastillo',  
     'ckeditor',
     'ckeditor_uploader',
+    'app_estudiocastillo', 
+    'perfiles',
     
 ]
 

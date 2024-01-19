@@ -10,6 +10,7 @@ urlpatterns = [
    path('admin/', admin.site.urls),
    path('estudiocastillo/', include("app_estudiocastillo.urls")),
    path('ckeditor/', include('ckeditor_uploader.urls')),
+   path("perfiles/", include("perfiles.urls")),
    
 ]
 

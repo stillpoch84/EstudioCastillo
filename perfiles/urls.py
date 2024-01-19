@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
-from perfiles.views import registro, login_view, CustomLogoutView, MiPerfilUpdateView,\
-    agregar_avatar
+from perfiles.views import registro, login_view, CustomLogoutView, MiPerfilUpdateView, agregar_avatar
 
 
 urlpatterns = [

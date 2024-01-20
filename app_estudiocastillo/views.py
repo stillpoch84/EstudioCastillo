@@ -15,7 +15,7 @@ class ClienteListView(ListView):
     
 class ClienteCreateView(LoginRequiredMixin, CreateView):
     model = Cliente
-    fields = ('id', 'razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos')
+    fields = ('razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos')
     success_url = reverse_lazy('lista_clientes')   
 
 class ClienteDetailView(LoginRequiredMixin, DetailView):
@@ -24,7 +24,7 @@ class ClienteDetailView(LoginRequiredMixin, DetailView):
 
 class ClienteUpdateView(LoginRequiredMixin, UpdateView):
     model = Cliente
-    fields = ('id', 'razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos')
+    fields = ('razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos')
     success_url = reverse_lazy('lista_clientes')
 
 class ClienteDeleteView(LoginRequiredMixin, DeleteView):

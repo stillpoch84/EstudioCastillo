@@ -5,31 +5,32 @@ from ckeditor.fields import RichTextField
 
 class Cliente(models.Model):
     localidades_lista = [
-        ('adrogue', 'Adrogué'),
-        ('burzaco', 'Burzaco'),
+        ('Adrogue', 'Adrogué'),
+        ('Burzaco', 'Burzaco'),
+        ('Longchamps', 'Longchamps'),
     ]
 
     provincias_lista = [
-        ('buenosaires', 'Buenos Aires'),
-        ('mendoza', 'Mendoza'),
+        ('Buenos Aires', 'Buenos Aires'),
+        ('Mendoza', 'Mendoza'),
     ]
 
     forma_lista = [
-        ('cooperativa', 'Cooperativa'),
-        ('sociedad', 'Sociedad'),
-        ('unipersonal', 'Unipersonal'),
+        ('Cooperativa', 'Cooperativa'),
+        ('Sociedad', 'Sociedad'),
+        ('Unipersonal', 'Unipersonal'),
     ]
 
     situacioniva_lista = [
-        ('monotributo', 'Monotributo'),
+        ('Monotributo', 'Monotributo'),
         ('Inscripto', 'Inscripto'),
         ('Exento', 'Exento'),
     ]
 
     ingresosbrutos_lista = [
-        ('monotributo', 'Monotributo'),
-        ('Inscripto', 'Inscripto'),
-        ('Exento', 'Exento'),
+        ('Convenio', 'Convenio'),
+        ('Local', 'Local'),
+        ('Unificado', 'Unificado'),
     ]
 
     id = models.AutoField(primary_key=True)

@@ -24,9 +24,9 @@
           <th>Domicilio</th>
           <th>Localidad</th>
           <th>Provincia</th>
-          <th>Contacto</th>
+          <!-- <th>Contacto</th> 
           <th>Celular</th>
-          <th>Mail</th>
+          <th>Mail</th> -->
           <th>Forma</th>
           <th>Situación de IVA</th>
           <th>Ingresos Brutos</th>
@@ -39,9 +39,9 @@
           <td>{{ cliente.domicilio }}</td>
           <td>{{ cliente.localidad }}</td>
           <td>{{ cliente.provincia }}</td>
-          <td>{{ cliente.contacto_nombre }}</td>
+          <!-- <td>{{ cliente.contacto_nombre }}</td>
           <td>{{ cliente.celular }}</td>
-          <td>{{ cliente.mail }}</td>
+          <td>{{ cliente.mail }}</td> -->
           <td>{{ cliente.forma }}</td>
           <td>{{ cliente.situacion_iva }}</td>
           <td>{{ cliente.ingresos_brutos }}</td>
@@ -51,12 +51,12 @@
             </a>
           </td>
           <td>
-            <a href="{% url 'editar_cliente' vino.id %}">
+            <a href="{% url 'editar_cliente' cliente.id %}">
               <span class='bi bi-pencil-fill' style="color: black;"></span>
             </a>
           </td>
           <td>
-            <a href="{% url 'eliminar_cliente' vino.id %}">
+            <a href="{% url 'eliminar_cliente' cliente.id %}">
               <i class="bi bi-trash" style="color: black;"></i>
             </a>
           </td>

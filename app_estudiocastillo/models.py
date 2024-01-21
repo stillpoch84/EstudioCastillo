@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.core.validators import MinLengthValidator, MaxLengthValidator, RegexValidator
 
 # Create your models here.
 
@@ -56,12 +57,29 @@ class Cliente(models.Model):
 
     id = models.AutoField(primary_key=True)
     razon_social = models.CharField(max_length=128, blank=False, null=False)
-    CUIT = models.CharField(max_length=11, blank=False, null=False)
+    CUIT = models.CharField(max_length=11,
+        blank=False,
+        null=False,
+        validators=[
+            MinLengthValidator(limit_value=11, message="El CUITdebe tener 11 dígitos."),
+            MaxLengthValidator(limit_value=11, message="El CUITdebe tener 11 dígitos."),
+            RegexValidator(regex=r'^\d{11}$', message="El CUITdebe tener 11 dígitos.")
+        ]
+    )
     domicilio = models.CharField(max_length=128, blank=False, null=False)
     localidad = models.CharField(max_length=64, blank=False, null=False, choices=localidades_lista)
     provincia = models.CharField(max_length=64, blank=False, null=False, choices=provincias_lista)
     contacto_nombre = models.CharField(max_length=128, blank=False, null=False)
-    celular = models.IntegerField(blank=False, null=False)
+    celular = models.CharField(
+        max_length=10,
+        blank=False,
+        null=False,
+        validators=[
+            MaxLengthValidator(limit_value=10, message="El número de celular debe tener 10 dígitos."),
+            MinLengthValidator(limit_value=10, message="El número de celular debe tener 10 dígitos."),
+            RegexValidator(regex=r'^\d{10}$', message="El número de celular debe tener 10 dígitos.")
+        ]
+    )
     mail = models.EmailField(blank=False, null=False)
     forma = models.CharField(max_length=64, blank=False, null=False, choices=forma_lista)
     situacion_iva = models.CharField(max_length=64, blank=False, null=False, choices=situacioniva_lista)

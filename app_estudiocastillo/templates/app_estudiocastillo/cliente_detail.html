@@ -1,0 +1,39 @@
+{% extends "app_estudiocastillo/base.html" %}
+
+{% block contenido %}
+
+<p>
+  <strong>Cliente:</strong> {{object.razon_social}}
+</p>
+<p>
+  <strong>CUIT:</strong> {{object.CUIT}}
+</p>
+<p>
+  <strong>Celular</strong> {{object.celular}}
+</p>
+<p>
+  <strong>Mail</strong> {{object.mail}}
+</p>
+<p>
+  <strong>Domicilio:</strong> {{object.domicilio}}
+</p>
+<p>
+  <strong>Localidad:</strong> {{object.localidad}}
+</p>
+<p>
+  <strong>Provincia:</strong> {{object.provincia}}
+</p>
+<p>
+  <strong>Forma:</strong> {{object.forma}}
+</p>
+<p>
+    <strong>Situación de IVA:</strong> {{object.situacion_iva}}
+  </p>
+<p>
+    <strong>Ingresos Brutos:</strong> {{object.ingresos_brutos}}
+</p>
+
+<br>
+<a href="{% url 'lista_clientes' %}">Volver a la lista.</a>
+
+{% endblock contenido %}

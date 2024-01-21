@@ -11,29 +11,29 @@ from app_estudiocastillo.models import Cliente
 
 class ClienteListView(ListView):
     model = Cliente
-    template_name = 'app_estudiocastillo/lista_clientes.html'
+    template_name = 'app_estudiocastillo/cliente_lista.html'
     
 class ClienteCreateView(LoginRequiredMixin, CreateView):
     model = Cliente
     fields = ('razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos')
-    success_url = reverse_lazy('lista_clientes')   
+    success_url = reverse_lazy('cliente_lista')   
 
 class ClienteDetailView(LoginRequiredMixin, DetailView):
     model = Cliente
-    success_url = reverse_lazy('lista_clientes')
+    success_url = reverse_lazy('cliente_lista')
 
 class ClienteUpdateView(LoginRequiredMixin, UpdateView):
     model = Cliente
     fields = ('razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos')
-    success_url = reverse_lazy('lista_clientes')
+    success_url = reverse_lazy('cliente_lista')
 
 class ClienteDeleteView(LoginRequiredMixin, DeleteView):
     model = Cliente
-    success_url = reverse_lazy('lista_clientes')
+    success_url = reverse_lazy('cliente_lista')
 
 class BuscarClienteView(ListView):
     model = Cliente
-    template_name = 'app_estudiocastillo/buscar_cliente.html'
+    template_name = 'app_estudiocastillo/cliente_search.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')

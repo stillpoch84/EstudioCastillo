@@ -21,14 +21,14 @@
           <th>ID</th>
           <th style="min-width: 200px;">Razon Social</th>
           <th>CUIT</th>
-          <th style="min-width: 150px;">Domicilio</th>
+          <!-- <th style="min-width: 150px;">Domicilio</th>
           <th style="min-width: 100px;">Localidad</th>
           <th style="min-width: 150px;">Provincia</th>
-          <!-- <th>Contacto</th> 
+          <th>Contacto</th> 
           <th>Celular</th>
           <th>Mail</th> -->
           <th>Forma</th>
-          <th>Situación de IVA</th>
+          <th style="min-width: 100px;">Situación IVA</th>
           <th>Ingresos Brutos</th>
         </tr>
         {% for cliente in object_list %}
@@ -36,10 +36,10 @@
           <td>{{ cliente.id }}</td>
           <td>{{ cliente.razon_social }}</td>
           <td>{{ cliente.CUIT }}</td>
-          <td>{{ cliente.domicilio }}</td>
+          <!--<td>{{ cliente.domicilio }}</td>
           <td>{{ cliente.localidad }}</td>
           <td>{{ cliente.provincia }}</td>
-          <!-- <td>{{ cliente.contacto_nombre }}</td>
+          <td>{{ cliente.contacto_nombre }}</td>
           <td>{{ cliente.celular }}</td>
           <td>{{ cliente.mail }}</td> -->
           <td>{{ cliente.forma }}</td>

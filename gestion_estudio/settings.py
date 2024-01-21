@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'app_estudiocastillo', 
     'perfiles',
+    'listados',
+    'agenda',
     
 ]
 

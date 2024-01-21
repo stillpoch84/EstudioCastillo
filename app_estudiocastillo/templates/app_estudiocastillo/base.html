@@ -28,15 +28,16 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <img src="{% static 'images/estudiologo.gif' %}" alt="I Nostri" class="logo" width=90 height=90>
+                <img src="{% static 'images/estudiologo.gif' %}" alt="Estudio Castillo" class="logo" width=90 height=90>
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'lista_clientes' %}">Clientes</a>
+                <a class="navbar-brand" href="{% url 'impuesto_list' %}">Impuestos</a>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <div style="display: inline-flex;">
                             <img src="{{ user.avatar.imagen.url }}" alt="User Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 5px;">
-                            <span>{{ user.username }}</span>
+                            <!--<span>{{ user.username }}</span> -->
                         </div>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

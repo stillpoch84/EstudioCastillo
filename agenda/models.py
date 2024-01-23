@@ -4,7 +4,7 @@ from ckeditor.fields import RichTextField
 from django.core.validators import MinLengthValidator, MaxLengthValidator, RegexValidator
 
 
-class Impuesto(models.Model):
+class Vencimiento(models.Model):
     impuesto = models.CharField(max_length=64, blank=False, null=False)
     fecha_vencimiento = models.DateField(blank=True, null=True)
     

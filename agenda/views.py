@@ -6,36 +6,36 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django import forms
 
-from agenda.models import Impuesto
+from agenda.models import Vencimiento
 
 
-class ImpuestoListView(ListView):
-    model = Impuesto
-    template_name = 'impuestos/impuesto_list.html'
+class VencimientoListView(ListView):
+    model = Vencimiento
+    template_name = 'vencimiento/vencimiento_list.html'
     
-class ImpuestoCreateView(LoginRequiredMixin, CreateView):
-    model = Impuesto
-    fields = ('impuesto', 'fecha_vencimiento')
-    success_url = reverse_lazy('impuesto_list')  
+class VencimientoCreateView(LoginRequiredMixin, CreateView):
+    model = Vencimiento
+    fields = ('vencimiento', 'fecha_vencimiento')
+    success_url = reverse_lazy('vencimiento_list')  
 
-class BuscarImpuestoView(ListView):
-    model = Impuesto
-    template_name = 'agenda/impuesto_search.html'
+class BuscarVencimientoView(ListView):
+    model = Vencimiento
+    template_name = 'agenda/vencimiento_search.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        object_list = Impuesto.objects.filter(Q(impuesto__icontains=query))
+        object_list = Vencimiento.objects.filter(Q(impuesto__icontains=query))
         return object_list
     
-class ImpuestoDetailView(LoginRequiredMixin, DetailView):
-    model = Impuesto
-    success_url = reverse_lazy('impuesto_list')
+class VencimientoDetailView(LoginRequiredMixin, DetailView):
+    model = Vencimiento
+    success_url = reverse_lazy('vencimiento_list')
 
-class ImpuestoUpdateView(LoginRequiredMixin, UpdateView):
-    model = Impuesto
+class VencimientoUpdateView(LoginRequiredMixin, UpdateView):
+    model = Vencimiento
     fields = ('impuesto', 'fecha_vencimiento')
-    success_url = reverse_lazy('impuesto_list')
+    success_url = reverse_lazy('vencimiento_list')
 
-class ImpuestoDeleteView(LoginRequiredMixin, DeleteView):
-    model = Impuesto
-    success_url = reverse_lazy('impuesto_list')
+class VencimientoDeleteView(LoginRequiredMixin, DeleteView):
+    model = Vencimiento
+    success_url = reverse_lazy('vencimiento_list')

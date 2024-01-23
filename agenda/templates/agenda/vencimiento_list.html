@@ -1,0 +1,52 @@
+{% extends "app_estudiocastillo/base.html" %}
+
+{% block contenido %}
+<section>
+  <div>
+    <div class="col-md-8 mt-3 left">
+      <div class="d-flex justify-content-between mb-3">
+    <h1>Vencimiento de impuestos</h1>
+    <a href="{% url 'vencimiento_create' %}" class="btn btn-dark">Crear Impuesto</a>
+      </div>
+     <form action="{% url 'vencimiento_search' %}" method="GET">
+      {% csrf_token %}
+      <!--<input name="q" type="text" placeholder="Ingrese palabra clave."> -->
+      <input type="date" value="Buscar">
+      <input type="submit" value="Buscar">
+    </form>
+    <br>
+    
+    <table class="table">
+      <tbody>
+        <tr>
+          <th style="min-width: 200px;">Impuesto</th>
+          <th>Fecha de vencimiento</th>
+         </tr>
+        {% for vencimiento in object_list %}
+        <tr>
+          <td>{{ vencimiento.impuesto }}</td>
+          <td>{{ vencimiento.fecha_vencimiento }}</td>
+          <td>
+            <a href="{% url 'ver_vencimiento' vencimiento.id %}">
+            <span class='bi bi-info-circle' style="color: black;"></span>
+            </a>
+          </td>
+          <td>
+            <a href="{% url 'vencimiento_edit' vencimiento.id %}">
+              <span class='bi bi-pencil-fill' style="color: black;"></span>
+            </a>
+          </td>
+          <td>
+            <a href="{% url 'vencimiento_delete' vencimiento.id %}">
+              <i class="bi bi-trash" style="color: black;"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+ 
+  </div>
+ </section>
+ {% endblock contenido %}
+ 

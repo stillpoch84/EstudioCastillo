@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.core.validators import MinLengthValidator, MaxLengthValidator, RegexValidator
+import math
 
 # Create your models here.
 
@@ -84,6 +85,16 @@ class Cliente(models.Model):
     forma = models.CharField(max_length=64, blank=False, null=False, choices=forma_lista)
     situacion_iva = models.CharField(max_length=64, blank=False, null=False, choices=situacioniva_lista)
     ingresos_brutos = models.CharField(max_length=64, blank=False, null=False, choices=ingresosbrutos_lista)
+    honorarios = models.FloatField(default=0, blank=False, null=False)
+
+    def save(self, *args, **kwargs):
+        # Round up to the next multiple of 100 and convert to integer
+        rounded_honorarios = int(math.ceil(self.honorarios / 100) * 100)
+
+        # Update the 'honorarios' field with the rounded value
+        self.honorarios = rounded_honorarios
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.razon_social} | {self.CUIT} | {self.domicilio} | {self.localidad} | {self.provincia} \

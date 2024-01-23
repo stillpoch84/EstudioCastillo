@@ -30,8 +30,8 @@
             <div class="container">
                 <img src="{% static 'images/estudiologo.gif' %}" alt="Estudio Castillo" class="logo" width=90 height=90>
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-                <a class="navbar-brand" href="{% url 'lista_clientes' %}">Clientes</a>
-                <a class="navbar-brand" href="{% url 'impuesto_list' %}">Impuestos</a>
+                <a class="navbar-brand" href="{% url 'cliente_list' %}">Clientes</a>
+                <a class="navbar-brand" href="{% url 'vencimiento_list' %}">Vencimientos</a>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

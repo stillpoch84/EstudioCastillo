@@ -2,16 +2,16 @@ from django.contrib import admin
 from django.urls import path
 
    
-from agenda.views import ImpuestoListView, ImpuestoCreateView, BuscarImpuestoView, ImpuestoDetailView, ImpuestoUpdateView, ImpuestoDeleteView
+from agenda.views import VencimientoListView, VencimientoCreateView, BuscarVencimientoView, VencimientoDetailView, VencimientoUpdateView, VencimientoDeleteView
 
 
 urlpatterns = [
-    path('impuestos/', ImpuestoListView.as_view(), name='impuesto_list'),
-    path('crear-impuesto/', ImpuestoCreateView.as_view(), name='impuesto_create'),
-    path('buscar-impuesto/', BuscarImpuestoView.as_view(), name='impuesto_search'),
-    path('impuesto/<int:pk>/', ImpuestoDetailView.as_view(), name='ver_impuesto'),
-    path('editar-impuesto/<int:pk>/', ImpuestoUpdateView.as_view(), name="impuesto_edit"),
-    path('eliminar-impuesto/<int:pk>/', ImpuestoDeleteView.as_view(), name="impuesto_delete"), 
+    path('vencimientos/', VencimientoListView.as_view(), name='vencimiento_list'),
+    path('crear-vencimiento/', VencimientoCreateView.as_view(), name='vencimiento_create'),
+    path('buscar-vencimiento/', BuscarVencimientoView.as_view(), name='vencimiento_search'),
+    path('vencimiento/<int:pk>/', VencimientoDetailView.as_view(), name='ver_vencimiento'),
+    path('editar-vencimiento/<int:pk>/', VencimientoUpdateView.as_view(), name="vencimiento_edit"),
+    path('eliminar-vencimiento/<int:pk>/', VencimientoDeleteView.as_view(), name="vencimiento_delete"), 
 
      
     

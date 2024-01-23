@@ -11,25 +11,25 @@ from app_estudiocastillo.models import Cliente
 
 class ClienteListView(ListView):
     model = Cliente
-    template_name = 'app_estudiocastillo/cliente_lista.html'
+    template_name = 'app_estudiocastillo/cliente_list.html'
     
 class ClienteCreateView(LoginRequiredMixin, CreateView):
     model = Cliente
-    fields = ('razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos')
-    success_url = reverse_lazy('cliente_lista')   
+    fields = ('razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos', 'honorarios')
+    success_url = reverse_lazy('cliente_list')   
 
 class ClienteDetailView(LoginRequiredMixin, DetailView):
     model = Cliente
-    success_url = reverse_lazy('cliente_lista')
+    success_url = reverse_lazy('cliente_list')
 
 class ClienteUpdateView(LoginRequiredMixin, UpdateView):
     model = Cliente
-    fields = ('razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos')
-    success_url = reverse_lazy('cliente_lista')
+    fields = ('razon_social', 'CUIT', 'domicilio', 'localidad', 'provincia', 'contacto_nombre', 'celular', 'mail', 'forma', 'situacion_iva', 'ingresos_brutos', 'honorarios')
+    success_url = reverse_lazy('cliente_list')
 
 class ClienteDeleteView(LoginRequiredMixin, DeleteView):
     model = Cliente
-    success_url = reverse_lazy('cliente_lista')
+    success_url = reverse_lazy('cliente_list')
 
 class BuscarClienteView(ListView):
     model = Cliente
@@ -37,5 +37,5 @@ class BuscarClienteView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        object_list = Cliente.objects.filter(Q(razon_social__icontains=query)|Q(CUIT__icontains=query)|Q(contacto_nombre__icontains=query)|Q(forma__icontains=query)|Q(situacion_iva__icontains=query)|Q(ingresos_brutos__icontains=query))
+        object_list = Cliente.objects.filter(Q(razon_social__icontains=query)|Q(CUIT__icontains=query)|Q(contacto_nombre__icontains=query)|Q(forma__icontains=query)|Q(situacion_iva__icontains=query)|Q(ingresos_brutos__icontains=query)|Q(honorarios__icontains=query))
         return object_list

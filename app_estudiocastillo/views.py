@@ -39,3 +39,7 @@ class BuscarClienteView(ListView):
         query = self.request.GET.get('q')
         object_list = Cliente.objects.filter(Q(razon_social__icontains=query)|Q(CUIT__icontains=query)|Q(contacto_nombre__icontains=query)|Q(forma__icontains=query)|Q(situacion_iva__icontains=query)|Q(ingresos_brutos__icontains=query)|Q(honorarios__icontains=query))
         return object_list
+
+class HonorarioListView(ListView):
+    model = Cliente
+    template_name = 'app_estudiocastillo/honorario_list.html'

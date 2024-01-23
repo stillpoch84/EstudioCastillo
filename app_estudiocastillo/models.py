@@ -56,6 +56,11 @@ class Cliente(models.Model):
         ('Unificado', 'Unificado'),
     ]
 
+    si_no = [
+        ('Si', 'Si'),
+        ('No', 'No'),
+    ]
+
     id = models.AutoField(primary_key=True)
     razon_social = models.CharField(max_length=128, blank=False, null=False)
     CUIT = models.CharField(max_length=11,
@@ -86,12 +91,10 @@ class Cliente(models.Model):
     situacion_iva = models.CharField(max_length=64, blank=False, null=False, choices=situacioniva_lista)
     ingresos_brutos = models.CharField(max_length=64, blank=False, null=False, choices=ingresosbrutos_lista)
     honorarios = models.FloatField(default=0, blank=False, null=False)
+    recibe_factura = models.CharField(max_length=2, default='No', null=False, blank=False)
 
     def save(self, *args, **kwargs):
-        # Round up to the next multiple of 100 and convert to integer
         rounded_honorarios = int(math.ceil(self.honorarios / 100) * 100)
-
-        # Update the 'honorarios' field with the rounded value
         self.honorarios = rounded_honorarios
 
         super().save(*args, **kwargs)
@@ -99,3 +102,10 @@ class Cliente(models.Model):
     def __str__(self):
         return f'{self.razon_social} | {self.CUIT} | {self.domicilio} | {self.localidad} | {self.provincia} \
             | {self.contacto_nombre} | {self.celular} | {self.mail} | {self.forma} | {self.situacion_iva} | {self.ingresos_brutos}'
+
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from .models import Cliente
+
+
+

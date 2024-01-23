@@ -30,7 +30,23 @@
             <div class="container">
                 <img src="{% static 'images/estudiologo.gif' %}" alt="Estudio Castillo" class="logo" width=90 height=90>
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-                <a class="navbar-brand" href="{% url 'cliente_list' %}">Clientes</a>
+                <!--<a class="navbar-brand" href="{% url 'cliente_list' %}">Clientes</a>-->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div style="display: inline-flex;">
+                            <span>Clientes</span>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'cliente_list' %}">Listado de clientes</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'honorario_list' %}">LIstado de honorarios</a>
+                        </li>
+                       
+                    </ul>
+                  </div>
                 <a class="navbar-brand" href="{% url 'vencimiento_list' %}">Vencimientos</a>
                 {% if user.is_authenticated %}
                 <div class="dropdown">

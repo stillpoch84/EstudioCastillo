@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 
    
-from app_estudiocastillo.views import ClienteListView, ClienteCreateView, BuscarClienteView, ClienteDetailView, ClienteUpdateView, ClienteDeleteView
+from app_estudiocastillo.views import ClienteListView, ClienteCreateView, BuscarClienteView, ClienteDetailView, ClienteUpdateView, ClienteDeleteView, HonorarioListView
 
 
 urlpatterns = [
@@ -12,6 +12,7 @@ urlpatterns = [
     path('clientes/<int:pk>/', ClienteDetailView.as_view(), name='cliente_detail'),
     path('editar-cliente/<int:pk>/', ClienteUpdateView.as_view(), name="cliente_edit"),
     path('eliminar-cliente/<int:pk>/', ClienteDeleteView.as_view(), name="cliente_delete"), 
-   
+    path('honorarios/', HonorarioListView.as_view(), name="honorario_list"), 
+    
     
 ]

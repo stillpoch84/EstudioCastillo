@@ -5,8 +5,7 @@
   <div>
     <div class="col-md-8 mt-3 left">
       <div class="d-flex justify-content-between mb-3">
-    <h1>Clientes</h1>
-    <a href="{% url 'cliente_create' %}" class="btn btn-dark">Crear Cliente</a>
+    <h1>Honorarios</h1>
         </div>
      <form action="{% url 'cliente_search' %}" method="GET">
       {% csrf_token %}
@@ -14,6 +13,13 @@
       <input type="submit" value="Buscar">
     </form>
     <br>
+
+    <label for="factura-filtro">Filtrar por Factura:</label>
+      <select id="factura-filter" name="factura-filter">
+        <option value="" selected>Todos</option>
+        <option value="SI">Con Factura</option>
+        <option value="No">Sin Factura</option>
+      </select>
     
     <table class="table">
       <tbody>
@@ -21,20 +27,18 @@
           <th>ID</th>
           <th style="min-width: 200px;">Razon Social</th>
           <th>CUIT</th>
-          <th>Forma</th>
           <th style="min-width: 100px;">Situación IVA</th>
-          <th>Ingresos Brutos</th>
           <th>Honorarios</th>
+          <th>Factura</th>
         </tr>
         {% for cliente in object_list %}
         <tr>
           <td>{{ cliente.id }}</td>
           <td>{{ cliente.razon_social }}</td>
           <td>{{ cliente.CUIT }}</td>
-          <td>{{ cliente.forma }}</td>
           <td>{{ cliente.situacion_iva }}</td>
-          <td>{{ cliente.ingresos_brutos }}</td>
           <td>{{ cliente.honorarios }}</td>
+          <td>{{ cliente.recibe_factura }}</td>
           <td>
             <a href="{% url 'cliente_detail' cliente.id %}">
             <span class='bi bi-info-circle' style="color: black;"></span>

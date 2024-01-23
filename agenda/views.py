@@ -15,7 +15,7 @@ class VencimientoListView(ListView):
     
 class VencimientoCreateView(LoginRequiredMixin, CreateView):
     model = Vencimiento
-    fields = ('vencimiento', 'fecha_vencimiento')
+    fields = ('impuesto', 'fecha_vencimiento')
     success_url = reverse_lazy('vencimiento_list')  
 
 class BuscarVencimientoView(ListView):

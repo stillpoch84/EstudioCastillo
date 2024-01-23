@@ -1,65 +1,90 @@
 {% extends "app_estudiocastillo/base.html" %}
 
 {% block contenido %}
-<section>
-  <div>
+  <section>
     <div class="col-md-8 mt-3 left">
       <div class="d-flex justify-content-between mb-3">
-    <h1>Honorarios</h1>
-        </div>
-     <form action="{% url 'cliente_search' %}" method="GET">
-      {% csrf_token %}
-      <input name="q" type="text" placeholder="Ingrese palabra clave.">
-      <input type="submit" value="Buscar">
-    </form>
-    <br>
+        <h1>Honorarios</h1>
+      </div>
+      <!--<form action="{% url 'cliente_search' %}" method="GET">
+        {% csrf_token %}
+        <input name="q" type="text" placeholder="Ingrese palabra clave.">
+        <input type="submit" value="Buscar">
+      </form> -->
+      <br>
 
-    <label for="factura-filtro">Filtrar por Factura:</label>
-      <select id="factura-filter" name="factura-filter">
-        <option value="" selected>Todos</option>
-        <option value="SI">Con Factura</option>
-        <option value="No">Sin Factura</option>
-      </select>
+      <table class="table table-hover" id="honorarios-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th style="min-width: 200px;">Razon Social</th>
+            <th>CUIT</th>
+            <th style="min-width: 100px;">Situación IVA</th>
+            <th>Honorarios</th>
+            <th>Factura</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cliente in object_list %}
+            <tr>
+              <td>{{ cliente.id }}</td>
+              <td>{{ cliente.razon_social }}</td>
+              <td>{{ cliente.CUIT }}</td>
+              <td>{{ cliente.situacion_iva }}</td>
+              <td>{{ cliente.honorarios }}</td>
+              <td>{{ cliente.recibe_factura }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <!-- DataTables JavaScript -->
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      var table = $('#honorarios-table').DataTable({
+        "paging": false, // Disable paging
+        "language": {
+          "search": "Buscar:",
+        }
+      });
+  
+      // Add a dropdown filter for the "Factura" column
+      table.columns(5).every(function () {
+        var column = this;
+  
+        var select = $('<select><option value=""></option></select>')
+          .appendTo($(column.header()).empty())
+          .on('change', function () {
+            var val = $.fn.dataTable.util.escapeRegex(
+              $(this).val()
+            );
+  
+            column
+              .search(val ? '^' + val + '$' : '', true, false)
+              .draw();
+          });
+  
+        column.data().unique().sort().each(function (d, j) {
+          select.append('<option value="' + d + '">' + d + '</option>')
+        });
+      });
+  
+      
+    });
     
-    <table class="table">
-      <tbody>
-        <tr>
-          <th>ID</th>
-          <th style="min-width: 200px;">Razon Social</th>
-          <th>CUIT</th>
-          <th style="min-width: 100px;">Situación IVA</th>
-          <th>Honorarios</th>
-          <th>Factura</th>
-        </tr>
-        {% for cliente in object_list %}
-        <tr>
-          <td>{{ cliente.id }}</td>
-          <td>{{ cliente.razon_social }}</td>
-          <td>{{ cliente.CUIT }}</td>
-          <td>{{ cliente.situacion_iva }}</td>
-          <td>{{ cliente.honorarios }}</td>
-          <td>{{ cliente.recibe_factura }}</td>
-          <td>
-            <a href="{% url 'cliente_detail' cliente.id %}">
-            <span class='bi bi-info-circle' style="color: black;"></span>
-            </a>
-          </td>
-          <td>
-            <a href="{% url 'cliente_edit' cliente.id %}">
-              <span class='bi bi-pencil-fill' style="color: black;"></span>
-            </a>
-          </td>
-          <td>
-            <a href="{% url 'cliente_delete' cliente.id %}">
-              <i class="bi bi-trash" style="color: black;"></i>
-            </a>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
- 
-  </div>
- </section>
- {% endblock contenido %}
- 
+  </script>
+  
+
+
+
+{% endblock contenido %}

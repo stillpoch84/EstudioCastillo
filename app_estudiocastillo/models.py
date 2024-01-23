@@ -91,7 +91,7 @@ class Cliente(models.Model):
     situacion_iva = models.CharField(max_length=64, blank=False, null=False, choices=situacioniva_lista)
     ingresos_brutos = models.CharField(max_length=64, blank=False, null=False, choices=ingresosbrutos_lista)
     honorarios = models.FloatField(default=0, blank=False, null=False)
-    recibe_factura = models.CharField(max_length=2, default='No', null=False, blank=False)
+    recibe_factura = models.CharField(max_length=2, default='No', null=False, blank=False, choices=si_no)
 
     def save(self, *args, **kwargs):
         rounded_honorarios = int(math.ceil(self.honorarios / 100) * 100)

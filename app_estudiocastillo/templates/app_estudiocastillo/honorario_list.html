@@ -16,7 +16,6 @@
       <table class="table table-hover" id="honorarios-table">
         <thead>
           <tr>
-            <th>ID</th>
             <th style="min-width: 200px;">Razon Social</th>
             <th>CUIT</th>
             <th style="min-width: 100px;">Situación IVA</th>
@@ -27,7 +26,6 @@
         <tbody>
           {% for cliente in object_list %}
             <tr>
-              <td>{{ cliente.id }}</td>
               <td>{{ cliente.razon_social }}</td>
               <td>{{ cliente.CUIT }}</td>
               <td>{{ cliente.situacion_iva }}</td>

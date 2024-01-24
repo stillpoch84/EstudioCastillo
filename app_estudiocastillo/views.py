@@ -12,6 +12,11 @@ from app_estudiocastillo.models import Cliente
 class ClienteListView(ListView):
     model = Cliente
     template_name = 'app_estudiocastillo/cliente_list.html'
+
+    def get_queryset(self):
+        # Get the ordering parameter from the URL, defaulting to 'razon_social'
+        order_by = self.request.GET.get('order_by', 'razon_social')
+        return Cliente.objects.all().order_by(order_by)
     
 class ClienteCreateView(LoginRequiredMixin, CreateView):
     model = Cliente

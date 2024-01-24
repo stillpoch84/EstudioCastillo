@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'perfiles',
     'listados',
     'agenda',
+    'honorarios',
     
 ]
 

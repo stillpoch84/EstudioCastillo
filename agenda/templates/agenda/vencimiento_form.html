@@ -1,14 +1,10 @@
 {% extends "app_estudiocastillo/base.html" %}
 
-{% block contenido %}
-
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="Guardar" />
-</form>
-
-<br>
-<a href="{% url 'vencimiento_list' %}">Volver a la lista.</a>
-
-{% endblock contenido %}
+{% block content %}
+  <h2>Cargar vencimientos</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

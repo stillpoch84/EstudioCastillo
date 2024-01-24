@@ -47,7 +47,22 @@
                        
                     </ul>
                   </div>
-                <a class="navbar-brand" href="{% url 'vencimiento_list' %}">Vencimientos</a>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div style="display: inline-flex;">
+                            <span>Vencimientos</span>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'vencimiento_list' %}">Listado de vencimientos</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'vencimiento_create' %}">Cargar vencimientos</a>
+                        </li>
+                       
+                    </ul>
+                  </div>
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

@@ -6,14 +6,9 @@
     <div class="col-md-8 mt-3 left">
       <div class="d-flex justify-content-between mb-3">
     <h1>Vencimiento de impuestos</h1>
-    <a href="{% url 'vencimiento_create' %}" class="btn btn-dark">Crear Impuesto</a>
+    <!--<a href="{% url 'vencimiento_create' %}" class="btn btn-dark">Crear Impuesto</a> -->
       </div>
-     <form action="{% url 'vencimiento_search' %}" method="GET">
-      {% csrf_token %}
-      <!--<input name="q" type="text" placeholder="Ingrese palabra clave."> -->
-      <input type="date" value="Buscar">
-      <input type="submit" value="Buscar">
-    </form>
+     
     <br>
     
     <table class="table">

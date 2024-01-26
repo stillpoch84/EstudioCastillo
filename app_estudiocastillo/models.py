@@ -94,8 +94,8 @@ class Cliente(models.Model):
     recibe_factura = models.CharField(max_length=2, default='No', null=False, blank=False, choices=si_no)
 
     def save(self, *args, **kwargs):
-        rounded_honorarios = int(math.ceil(self.honorarios / 100) * 100)
-        self.honorarios = rounded_honorarios
+        rounded_honorarios = round(self.honorarios / 100) * 100
+        self.honorarios = int(rounded_honorarios)
 
         super().save(*args, **kwargs)
 

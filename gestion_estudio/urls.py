@@ -12,6 +12,7 @@ urlpatterns = [
    path('ckeditor/', include('ckeditor_uploader.urls')),
    path("perfiles/", include("perfiles.urls")),
    path('agenda/', include('agenda.urls')),
+   path('honorarios/', include('honorarios.urls')),
    
 ]
 

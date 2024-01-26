@@ -1,10 +1,19 @@
 {% extends "app_estudiocastillo/base.html" %}
 
-{% block content %}
-  <h2>Cargar vencimientos</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
+{% block contenido %}
+
+<form method="post">
+ <!-- {% csrf_token %}
+  {{ form.as_p }} -->
+ 
+  <label for="options">Impuesto:</label>
+    <select name="options" id="options">
+      <option value="option1">Autónomos</option>
+      <option value="option2">Cargas Sociales</option>
+      <option value="option3">IVA</option>
+    </select>
+
+    <input type="submit" value="Guardar" />
   </form>
-{% endblock %}
+
+{% endblock contenido %}
